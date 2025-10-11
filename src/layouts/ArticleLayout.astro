@@ -1,0 +1,340 @@
+---
+import Layout from './Layout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import CardHeader from '../components/ui/CardHeader.astro';
+import CardContent from '../components/ui/CardContent.astro';
+import Badge from '../components/ui/Badge.astro';
+import Icon from '../components/icons/LucideIcon.astro';
+import { newsArticles } from '../data/news';
+
+const { frontmatter } = Astro.props;
+const { title, date, category, excerpt, author, readTime, image, slug } = frontmatter;
+
+// Get related articles (same category)
+const relatedArticles = newsArticles
+  .filter(a => a.category === category)
+  .slice(0, 3);
+---
+
+<Layout title={`${title} - BSW Basketball`} description={excerpt}>
+  <div class="min-h-screen bg-neutral-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-neutral-200">
+      <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo and Club Name -->
+          <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center">
+              <span class="text-lime-400 font-black text-xl">BSW</span>
+            </div>
+            <div>
+              <h1 class="text-2xl font-black text-neutral-900 uppercase tracking-tight">BSW Basketball</h1>
+            </div>
+          </div>
+
+          <!-- Navigation Menu -->
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/" class="text-neutral-900 hover:text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors">Home</a>
+            <a href="/#programs" class="text-neutral-900 hover:text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors">Programs</a>
+            <a href="/#about" class="text-neutral-900 hover:text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors">About</a>
+            <a href="/#gallery" class="text-neutral-900 hover:text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors">Gallery</a>
+            <a href="/news" class="text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors border-b-2 border-lime-400">News</a>
+            <a href="/#contact" class="text-neutral-900 hover:text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors">Contact</a>
+          </nav>
+
+          <!-- Phone and Registration -->
+          <div class="flex items-center space-x-6">
+            <div class="hidden xl:flex items-center space-x-3 text-neutral-900">
+              <Icon name="phone" class="h-5 w-5" />
+              <span class="font-medium">(555) 123-4567</span>
+            </div>
+            <Button class="bg-lime-400 hover:bg-lime-500 text-neutral-900 font-bold uppercase tracking-wide px-6 py-3 rounded-lg transition-all hover:scale-105">
+              Register Now
+            </Button>
+            <Button variant="ghost" size="icon" class="lg:hidden">
+              <Icon name="menu" class="h-6 w-6" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Hero -->
+    <section class="relative py-16 bg-neutral-900 overflow-hidden">
+      <div class="absolute inset-0">
+        <img src={image || "/placeholder.svg?height=600&width=1400"} alt={title} class="w-full h-full object-cover opacity-30" />
+        <div class="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-neutral-900/60"></div>
+      </div>
+
+      <div class="relative z-10 container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          <!-- Breadcrumb -->
+          <div class="flex items-center space-x-2 text-sm mb-8">
+            <a href="/" class="text-neutral-400 hover:text-lime-400 transition-colors">Home</a>
+            <span class="text-neutral-600">/</span>
+            <a href="/news" class="text-neutral-400 hover:text-lime-400 transition-colors">News</a>
+            <span class="text-neutral-600">/</span>
+            <span class="text-neutral-300">Article</span>
+          </div>
+
+          <!-- Category Badge -->
+          <Badge class="bg-lime-400 text-neutral-900 mb-6">
+            {category}
+          </Badge>
+
+          <!-- Title -->
+          <h1 class="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter leading-tight mb-8">
+            {title}
+          </h1>
+
+          <!-- Meta Information -->
+          <div class="flex flex-wrap items-center gap-6 text-neutral-300">
+            <div class="flex items-center space-x-2">
+              <Icon name="calendar" class="h-5 w-5 text-lime-400" />
+              <span class="font-medium">{date}</span>
+            </div>
+            {author && (
+              <div class="flex items-center space-x-2">
+                <Icon name="user" class="h-5 w-5 text-lime-400" />
+                <span class="font-medium">{author}</span>
+              </div>
+            )}
+            {readTime && (
+              <div class="flex items-center space-x-2">
+                <Icon name="clock" class="h-5 w-5 text-lime-400" />
+                <span class="font-medium">{readTime}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          <!-- Featured Image -->
+          <div class="mb-12 rounded-2xl overflow-hidden shadow-lg">
+            <img 
+              src={image || "/placeholder.svg?height=600&width=1200"}
+              alt={title}
+              class="w-full h-auto"
+            />
+          </div>
+
+          <!-- Article Body (Markdown Content) -->
+          <div class="prose prose-lg max-w-none
+            prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-headings:text-neutral-900
+            prose-h1:text-4xl prose-h1:mb-8
+            prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:text-neutral-900
+            prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-neutral-800
+            prose-p:text-neutral-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:font-medium prose-p:text-lg
+            prose-strong:text-neutral-900 prose-strong:font-black
+            prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6
+            prose-li:text-neutral-700 prose-li:mb-2 prose-li:font-medium
+            prose-a:text-lime-500 prose-a:font-bold prose-a:no-underline hover:prose-a:text-lime-600
+            prose-img:rounded-xl prose-img:shadow-lg
+            prose-blockquote:border-l-4 prose-blockquote:border-lime-400 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-neutral-600
+          ">
+            <slot />
+          </div>
+
+          <!-- Article Footer / Share Section -->
+          <div class="mt-16 pt-12 border-t border-neutral-200">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div>
+                <h3 class="font-black uppercase tracking-wide text-sm text-neutral-900 mb-3">
+                  Share This Article
+                </h3>
+                <div class="flex space-x-3">
+                  {['facebook', 'twitter', 'mail'].map((social) => (
+                    <button class="w-10 h-10 bg-neutral-100 rounded-lg flex items-center justify-center text-neutral-700 hover:bg-lime-400 hover:text-neutral-900 transition-all hover:scale-105">
+                      <Icon name={social} class="h-5 w-5" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <a href="/news">
+                  <Button variant="outline" class="border-2 border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white font-bold uppercase tracking-wide px-6 py-3 rounded-lg transition-all">
+                    <Icon name="arrow-left" class="mr-2 h-4 w-4" />
+                    Back to News
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Articles -->
+    {relatedArticles.length > 0 && (
+      <section class="py-24 bg-neutral-50">
+        <div class="container mx-auto px-6">
+          <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-5xl font-black text-neutral-900 uppercase tracking-tighter mb-4">
+                RELATED NEWS
+              </h2>
+              <div class="w-24 h-1 bg-lime-400 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+              {relatedArticles.slice(0, 3).map((related) => (
+                <a href={`/news/${related.id}`}>
+                  <Card class="bg-white border-0 rounded-xl overflow-hidden hover:shadow-xl transition-all hover:scale-105 cursor-pointer h-full">
+                    <CardHeader class="p-0">
+                      <div class="w-full h-48 relative">
+                        <img 
+                          src="/placeholder.svg?height=200&width=300" 
+                          alt={related.title} 
+                          class="w-full h-full object-cover" 
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent"></div>
+                        <Badge class="absolute top-4 left-4 bg-lime-400 text-neutral-900">
+                          {related.category}
+                        </Badge>
+                      </div>
+                    </CardHeader>
+                    <CardContent class="p-6">
+                      <div class="text-xs text-lime-400 font-bold uppercase tracking-wide mb-2">
+                        {related.date}
+                      </div>
+                      <h3 class="text-lg font-black text-neutral-900 uppercase tracking-tight mb-3 leading-tight">
+                        {related.title}
+                      </h3>
+                      <p class="text-neutral-600 font-medium text-sm leading-relaxed mb-4">
+                        {related.excerpt}
+                      </p>
+                      <span class="inline-flex items-center text-neutral-900 hover:text-lime-400 font-bold uppercase text-xs tracking-wide transition-colors">
+                        Read More
+                        <Icon name="arrow-right" class="ml-2 h-3 w-3" />
+                      </span>
+                    </CardContent>
+                  </Card>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-neutral-900">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <Icon name="mail" class="h-16 w-16 text-lime-400 mx-auto mb-6" />
+          <h2 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6">
+            STAY IN THE LOOP
+          </h2>
+          <p class="text-xl text-neutral-300 font-medium mb-8 leading-relaxed">
+            Subscribe to our newsletter and never miss an update about BSW Basketball
+          </p>
+          <form class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+            <input 
+              type="email" 
+              placeholder="Enter your email address"
+              class="flex-1 px-6 py-4 rounded-lg border-2 border-neutral-700 bg-neutral-800 text-white placeholder-neutral-400 font-medium focus:border-lime-400 focus:outline-none transition-colors"
+            />
+            <Button class="bg-lime-400 hover:bg-lime-500 text-neutral-900 font-bold uppercase tracking-wide px-8 py-4 rounded-lg transition-all hover:scale-105">
+              Subscribe
+            </Button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 text-white py-16 border-t border-neutral-800">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-4 gap-12 mb-12">
+            <div>
+              <div class="flex items-center space-x-4 mb-6">
+                <div class="w-12 h-12 bg-lime-400 rounded-xl flex items-center justify-center">
+                  <span class="text-neutral-900 font-black text-xl">BSW</span>
+                </div>
+                <div>
+                  <h3 class="text-xl font-black uppercase tracking-tight">BSW Basketball</h3>
+                </div>
+              </div>
+              <p class="text-neutral-400 font-medium mb-8 leading-relaxed">
+                Developing champions on and off the court through expert coaching and character development.
+              </p>
+              <div class="flex space-x-4">
+                {['facebook', 'instagram', 'twitter', 'youtube'].map((social) => (
+                  <a href="#" class="text-neutral-400 hover:text-lime-400 transition-colors">
+                    <Icon name={social} class="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 class="font-black uppercase tracking-wide text-sm mb-6">QUICK LINKS</h4>
+              <ul class="space-y-3">
+                {['Home', 'About', 'Programs', 'Gallery', 'News'].map((link) => (
+                  <li>
+                    <a href={link === 'News' ? '/news' : `/#${link.toLowerCase()}`} class="text-neutral-400 hover:text-lime-400 font-medium transition-colors">
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-black uppercase tracking-wide text-sm mb-6">PROGRAMS</h4>
+              <ul class="space-y-3">
+                {[
+                  'Elementary (Ages 6-10)',
+                  'Middle School (Ages 11-14)',
+                  'High School (Ages 15-18)',
+                  'Summer Camps',
+                  'Private Training',
+                ].map((program) => (
+                  <li>
+                    <a href="/#programs" class="text-neutral-400 hover:text-lime-400 font-medium transition-colors">
+                      {program}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="font-black uppercase tracking-wide text-sm mb-6">CONTACT INFO</h4>
+              <div class="space-y-4">
+                <div class="flex items-start space-x-3">
+                  <Icon name="map-pin" class="h-5 w-5 text-lime-400 mt-0.5 flex-shrink-0" />
+                  <span class="text-neutral-400 font-medium">
+                    123 Sports Center Drive<br />
+                    Basketball City, BC 12345
+                  </span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <Icon name="phone" class="h-5 w-5 text-lime-400" />
+                  <span class="text-neutral-400 font-medium">(555) 123-4567</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <Icon name="mail" class="h-5 w-5 text-lime-400" />
+                  <span class="text-neutral-400 font-medium">info@bswbasketball.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-neutral-800 pt-8 text-center">
+            <p class="text-neutral-400 font-medium">
+              © {new Date().getFullYear()} BSW Basketball Club. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>

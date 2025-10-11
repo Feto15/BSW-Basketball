@@ -8,6 +8,10 @@ import Badge from '../components/ui/Badge.astro';
 import Input from '../components/ui/Input.astro';
 import Textarea from '../components/ui/Textarea.astro';
 import Icon from '../components/icons/LucideIcon.astro';
+import { getLatestNews } from '../data/news';
+
+// Get latest 3 news articles untuk homepage
+const latestNews = getLatestNews(3);
 ---
 
 <Layout>
@@ -270,46 +274,29 @@ import Icon from '../components/icons/LucideIcon.astro';
           </div>
 
           <div class="grid md:grid-cols-3 gap-8 mb-12">
-            {[
-              {
-                date: 'March 15, 2024',
-                title: 'BSW TEAMS WIN REGIONAL CHAMPIONSHIP',
-                desc: 'Our middle school and high school teams both secured first place in the regional tournament...',
-                image: 'tournament championship celebration',
-              },
-              {
-                date: 'March 8, 2024',
-                title: 'NEW TRAINING FACILITY OPENS',
-                desc: "We're excited to announce the opening of our second training facility with two additional courts...",
-                image: 'modern basketball training facility',
-              },
-              {
-                date: 'February 28, 2024',
-                title: 'SUMMER CAMP REGISTRATION OPEN',
-                desc: 'Registration is now open for our intensive summer basketball camps. Early bird pricing available...',
-                image: 'summer basketball camp kids',
-              },
-            ].map((news) => (
-              <Card class="bg-neutral-50 border-0 rounded-xl overflow-hidden hover:shadow-xl transition-all hover:scale-105">
-                <CardHeader class="p-0">
-                  <div class="w-full h-48 relative">
-                    <img src="/placeholder.svg?height=200&width=300" alt={news.title} class="w-full h-full object-cover" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent"></div>
-                  </div>
-                </CardHeader>
-                <CardContent class="p-8">
-                  <div class="text-sm text-lime-400 font-bold uppercase tracking-wide mb-3">{news.date}</div>
-                  <h3 class="text-xl font-black text-neutral-900 uppercase tracking-tight mb-4 leading-tight">
-                    {news.title}
-                  </h3>
-                  <p class="text-neutral-600 font-medium leading-relaxed">{news.desc}</p>
-                </CardContent>
-              </Card>
+            {latestNews.map((news) => (
+              <a href={`/news/post${news.id}`}>
+                <Card class="bg-neutral-50 border-0 rounded-xl overflow-hidden hover:shadow-xl transition-all hover:scale-105 cursor-pointer">
+                  <CardHeader class="p-0">
+                    <div class="w-full h-48 relative">
+                      <img src="/placeholder.svg?height=200&width=300" alt={news.title} class="w-full h-full object-cover" />
+                      <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent"></div>
+                    </div>
+                  </CardHeader>
+                  <CardContent class="p-8">
+                    <div class="text-sm text-lime-400 font-bold uppercase tracking-wide mb-3">{news.date}</div>
+                    <h3 class="text-xl font-black text-neutral-900 uppercase tracking-tight mb-4 leading-tight">
+                      {news.title}
+                    </h3>
+                    <p class="text-neutral-600 font-medium leading-relaxed">{news.excerpt}</p>
+                  </CardContent>
+                </Card>
+              </a>
             ))}
           </div>
 
           <div class="text-center">
-            <a href="#" class="inline-flex items-center text-neutral-900 hover:text-lime-400 font-bold uppercase tracking-wide transition-colors">
+            <a href="/news" class="inline-flex items-center text-neutral-900 hover:text-lime-400 font-bold uppercase tracking-wide transition-colors">
               View All News
               <Icon name="arrow-right" class="ml-2 h-5 w-5" />
             </a>

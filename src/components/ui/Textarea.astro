@@ -1,0 +1,17 @@
+---
+interface Props {
+  placeholder?: string;
+  class?: string;
+  rows?: number;
+  name?: string;
+}
+
+const { placeholder = '', class: className = '', rows = 4, name } = Astro.props;
+---
+
+<textarea 
+  placeholder={placeholder}
+  rows={rows}
+  name={name}
+  class={`border-2 border-neutral-200 rounded-lg p-4 w-full font-medium focus:border-lime-400 transition-colors outline-none resize-none ${className}`}
+></textarea>

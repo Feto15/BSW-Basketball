@@ -37,7 +37,43 @@ export default {
         tight: '-0.025em',
         wide: '0.025em',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            color: '#404040',
+            a: {
+              color: '#d4ff00',
+              '&:hover': {
+                color: '#bfe600',
+              },
+            },
+            strong: {
+              color: '#1a1a1a',
+              fontWeight: '900',
+            },
+            h1: {
+              color: '#1a1a1a',
+              fontWeight: '900',
+            },
+            h2: {
+              color: '#1a1a1a',
+              fontWeight: '900',
+            },
+            h3: {
+              color: '#262626',
+              fontWeight: '900',
+            },
+            blockquote: {
+              borderLeftColor: '#d4ff00',
+              color: '#525252',
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

@@ -23,7 +23,7 @@ const latestNews = getLatestNews(3);
           <!-- Logo and Club Name -->
           <div class="flex items-center space-x-4">
             <div class="w-12 h-12 bg-neutral-900 rounded-lg flex items-center justify-center">
-              <span class="text-lime-400 font-black text-xl">BSW</span>
+              <span class="text-lime-500 font-black text-xl">BSW</span>
             </div>
             <div>
               <h1 class="text-2xl font-black text-neutral-900 uppercase tracking-tight">BSW Basketball</h1>
@@ -32,12 +32,12 @@ const latestNews = getLatestNews(3);
 
           <!-- Navigation Menu -->
           <nav class="hidden lg:flex items-center space-x-8">
-            <a href="#home" class="text-neutral-900 hover:text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors">Home</a>
-            <a href="#programs" class="text-neutral-900 hover:text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors">Programs</a>
-            <a href="#about" class="text-neutral-900 hover:text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors">About</a>
-            <a href="#gallery" class="text-neutral-900 hover:text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors">Gallery</a>
-            <a href="#news" class="text-neutral-900 hover:text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors">News</a>
-            <a href="#contact" class="text-neutral-900 hover:text-lime-400 font-bold uppercase text-sm tracking-wide transition-colors">Contact</a>
+            <a href="#home" class="text-neutral-900 hover:text-lime-500 font-bold uppercase text-sm tracking-wide transition-colors">Home</a>
+            <a href="#programs" class="text-neutral-900 hover:text-lime-500 font-bold uppercase text-sm tracking-wide transition-colors">Programs</a>
+            <a href="#about" class="text-neutral-900 hover:text-lime-500 font-bold uppercase text-sm tracking-wide transition-colors">About</a>
+            <a href="#gallery" class="text-neutral-900 hover:text-lime-500 font-bold uppercase text-sm tracking-wide transition-colors">Gallery</a>
+            <a href="#news" class="text-neutral-900 hover:text-lime-500 font-bold uppercase text-sm tracking-wide transition-colors">News</a>
+            <a href="#contact" class="text-neutral-900 hover:text-lime-500 font-bold uppercase text-sm tracking-wide transition-colors">Contact</a>
           </nav>
 
           <!-- Phone and Registration -->
@@ -195,11 +195,11 @@ const latestNews = getLatestNews(3);
 
                   <div class="space-y-4 mb-6">
                     <div class="flex items-center space-x-3">
-                      <Icon name="calendar" class="h-5 w-5 text-lime-400" />
+                      <Icon name="calendar" class="h-5 w-5 text-lime-500" />
                       <span class="text-neutral-700 font-medium">{program.days}</span>
                     </div>
                     <div class="flex items-center space-x-3">
-                      <Icon name="clock" class="h-5 w-5 text-lime-400" />
+                      <Icon name="clock" class="h-5 w-5 text-lime-500" />
                       <span class="text-neutral-700 font-medium">{program.time}</span>
                     </div>
                   </div>
@@ -284,7 +284,7 @@ const latestNews = getLatestNews(3);
                     </div>
                   </CardHeader>
                   <CardContent class="p-8">
-                    <div class="text-sm text-lime-400 font-bold uppercase tracking-wide mb-3">{news.date}</div>
+                    <div class="text-sm text-lime-500 font-bold uppercase tracking-wide mb-3">{news.date}</div>
                     <h3 class="text-xl font-black text-neutral-900 uppercase tracking-tight mb-4 leading-tight">
                       {news.title}
                     </h3>
@@ -296,7 +296,7 @@ const latestNews = getLatestNews(3);
           </div>
 
           <div class="text-center">
-            <a href="/news" class="inline-flex items-center text-neutral-900 hover:text-lime-400 font-bold uppercase tracking-wide transition-colors">
+            <a href="/news" class="inline-flex items-center text-neutral-900 hover:text-lime-500 font-bold uppercase tracking-wide transition-colors">
               View All News
               <Icon name="arrow-right" class="ml-2 h-5 w-5" />
             </a>
@@ -371,7 +371,7 @@ const latestNews = getLatestNews(3);
                 <CardContent class="p-0">
                   <div class="flex items-center mb-6">
                     {[1, 2, 3, 4, 5].map((star) => (
-                      <Icon name="star" class="h-5 w-5 text-lime-400 fill-current" />
+                      <Icon name="star" class="h-5 w-5 text-yellow-400 fill-current" />
                     ))}
                   </div>
                   <p class="text-neutral-700 font-medium mb-8 leading-relaxed italic text-lg">
@@ -414,7 +414,7 @@ const latestNews = getLatestNews(3);
 
               <div class="space-y-8 mb-12">
                 <div class="flex items-start space-x-6">
-                  <div class="w-12 h-12 bg-lime-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div class="w-12 h-12 bg-lime-500 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Icon name="map-pin" class="h-6 w-6 text-neutral-900" />
                   </div>
                   <div>
@@ -429,7 +429,7 @@ const latestNews = getLatestNews(3);
                 </div>
 
                 <div class="flex items-start space-x-6">
-                  <div class="w-12 h-12 bg-lime-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div class="w-12 h-12 bg-lime-500 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Icon name="phone" class="h-6 w-6 text-neutral-900" />
                   </div>
                   <div>
@@ -439,7 +439,7 @@ const latestNews = getLatestNews(3);
                 </div>
 
                 <div class="flex items-start space-x-6">
-                  <div class="w-12 h-12 bg-lime-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div class="w-12 h-12 bg-lime-500 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Icon name="mail" class="h-6 w-6 text-neutral-900" />
                   </div>
                   <div>
@@ -453,7 +453,7 @@ const latestNews = getLatestNews(3);
                 <h4 class="font-black text-neutral-900 uppercase tracking-wide text-sm mb-6">FOLLOW US</h4>
                 <div class="flex space-x-4">
                   {['facebook', 'instagram', 'twitter', 'youtube'].map((social) => (
-                    <a href="#" class="w-12 h-12 bg-neutral-900 rounded-xl flex items-center justify-center text-white hover:bg-lime-400 hover:text-neutral-900 transition-all hover:scale-105">
+                    <a href="#" class="w-12 h-12 bg-neutral-900 rounded-xl flex items-center justify-center text-white hover:bg-lime-500 hover:text-neutral-900 transition-all hover:scale-105">
                       <Icon name={social} class="h-5 w-5" />
                     </a>
                   ))}
@@ -513,19 +513,19 @@ const latestNews = getLatestNews(3);
           <div class="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <div class="flex items-center space-x-4 mb-6">
-                <div class="w-12 h-12 bg-lime-400 rounded-xl flex items-center justify-center">
+                <div class="w-12 h-12 bg-lime-500 rounded-xl flex items-center justify-center">
                   <span class="text-neutral-900 font-black text-xl">BSW</span>
                 </div>
                 <div>
                   <h3 class="text-xl font-black uppercase tracking-tight">BSW Basketball</h3>
                 </div>
               </div>
-              <p class="text-neutral-400 font-medium mb-8 leading-relaxed">
+              <p class="text-neutral-300 font-medium mb-8 leading-relaxed">
                 Developing champions on and off the court through expert coaching and character development.
               </p>
               <div class="flex space-x-4">
                 {['facebook', 'instagram', 'twitter', 'youtube'].map((social) => (
-                  <a href="#" class="text-neutral-400 hover:text-lime-400 transition-colors">
+                  <a href="#" class="text-neutral-300 hover:text-lime-400 transition-colors">
                     <Icon name={social} class="h-5 w-5" />
                   </a>
                 ))}
@@ -537,7 +537,7 @@ const latestNews = getLatestNews(3);
               <ul class="space-y-3">
                 {['Home', 'About', 'Programs', 'Gallery', 'News'].map((link) => (
                   <li>
-                    <a href={`#${link.toLowerCase()}`} class="text-neutral-400 hover:text-lime-400 font-medium transition-colors">
+                    <a href={`#${link.toLowerCase()}`} class="text-neutral-300 hover:text-lime-400 font-medium transition-colors">
                       {link}
                     </a>
                   </li>
@@ -556,7 +556,7 @@ const latestNews = getLatestNews(3);
                   'Private Training',
                 ].map((program) => (
                   <li>
-                    <a href="#" class="text-neutral-400 hover:text-lime-400 font-medium transition-colors">
+                    <a href="#" class="text-neutral-300 hover:text-lime-400 font-medium transition-colors">
                       {program}
                     </a>
                   </li>
@@ -569,25 +569,25 @@ const latestNews = getLatestNews(3);
               <div class="space-y-4">
                 <div class="flex items-start space-x-3">
                   <Icon name="map-pin" class="h-5 w-5 text-lime-400 mt-0.5 flex-shrink-0" />
-                  <span class="text-neutral-400 font-medium">
+                  <span class="text-neutral-300 font-medium">
                     123 Sports Center Drive<br />
                     Basketball City, BC 12345
                   </span>
                 </div>
                 <div class="flex items-center space-x-3">
                   <Icon name="phone" class="h-5 w-5 text-lime-400" />
-                  <span class="text-neutral-400 font-medium">(555) 123-4567</span>
+                  <span class="text-neutral-300 font-medium">(555) 123-4567</span>
                 </div>
                 <div class="flex items-center space-x-3">
                   <Icon name="mail" class="h-5 w-5 text-lime-400" />
-                  <span class="text-neutral-400 font-medium">info@bswbasketball.com</span>
+                  <span class="text-neutral-300 font-medium">info@bswbasketball.com</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="border-t border-neutral-800 pt-8 text-center">
-            <p class="text-neutral-400 font-medium">
+            <p class="text-neutral-300 font-medium">
               © {new Date().getFullYear()} BSW Basketball Club. All rights reserved.
             </p>
           </div>

@@ -27,6 +27,13 @@ export default {
         lime: {
           400: '#d4ff00',
           500: '#bfe600',
+          600: '#a8c200',
+        },
+        sky: {
+          500: '#0ea5e9',
+        },
+        rose: {
+          500: '#f43f5e',
         },
       },
       fontWeight: {
